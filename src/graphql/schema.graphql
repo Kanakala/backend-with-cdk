@@ -1,0 +1,23 @@
+type Post {
+  id: Int!
+  userId: Int!
+  title: String!
+  body: String!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type PaginatedPosts {
+  items: [Post]
+  nextToken: String
+}
+
+type Query {
+  getPost(id: Int!, userId: Int!): Post
+  getPostById(id: Int!): Post
+  listPosts(limit: Int, nextToken: String): PaginatedPosts
+}
+
+type Mutation {
+  syncPosts: [Post]
+}

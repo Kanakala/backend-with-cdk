@@ -4,6 +4,7 @@
     "module": "commonjs",
     "lib": ["es2018"],
     "declaration": true,
+    "esModuleInterop": true,
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
@@ -17,7 +18,12 @@
     "inlineSources": true,
     "experimentalDecorators": true,
     "strictPropertyInitialization":false,
-    "typeRoots": ["./node_modules/@types"]
+    "typeRoots": ["./node_modules/@types"],
+    "baseUrl": "./",
+    "paths": {
+      "/opt/nodejs/logger": ["src/layers/logger/nodejs/logger"],
+      "/opt/nodejs/sync": ["src/layers/sync/nodejs/sync"]
+    }
   },
   "exclude": ["cdk.out"]
 }
