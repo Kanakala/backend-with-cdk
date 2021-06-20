@@ -35,7 +35,7 @@ export class LambdaStack extends cdk.Stack {
     this.myLambda = new NodejsFunction(this, `${this.env}-my-function`, {
       functionName: `${this.env}-my-function`,
       memorySize: 1024,
-      timeout: cdk.Duration.seconds(5),
+      timeout: cdk.Duration.seconds(30),
       runtime: Runtime.NODEJS_14_X,
       handler: 'main',
       entry: path.join(__dirname, `/../src/handlers/index.ts`),
@@ -51,7 +51,7 @@ export class LambdaStack extends cdk.Stack {
     });
 
     const eventRule = new Rule(this, `${this.env}-scheduleRule`, {
-      schedule: Schedule.cron({ minute: '40', hour: '10' }),
+      schedule: Schedule.cron({ minute: '0', hour: '0' }), // UTC Time
       ruleName: `${this.env}-scheduleRule`,
     });
     eventRule.addTarget(new LambdaFunction(this.myLambda));

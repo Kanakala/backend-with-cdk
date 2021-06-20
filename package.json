@@ -1,6 +1,7 @@
 {
   "name": "backend-with-cdk",
   "version": "0.1.0",
+  "author": "Sumanth Kanakala",
   "bin": {
     "backend-with-cdk": "bin/backend-with-cdk.js"
   },
