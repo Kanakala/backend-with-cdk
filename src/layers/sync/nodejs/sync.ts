@@ -2,6 +2,7 @@ import Joi from 'joi';
 import AWS from 'aws-sdk';
 import fetch from 'node-fetch';
 import { logger } from '/opt/nodejs/logger';
+import { postsAPI } from '../../../config/constants';
 
 const dynamoDBClient = new AWS.DynamoDB.DocumentClient();
 
@@ -147,9 +148,7 @@ export class Post {
 
   private async getLiveItems(): Promise<IPost[]> {
     try {
-      const data = (await fetch('https://jsonplaceholder.typicode.com/posts').then((res) =>
-        res.json(),
-      )) as unknown as IPost[];
+      const data = (await fetch(postsAPI).then((res) => res.json())) as unknown as IPost[];
       return data;
     } catch (err) {
       throw err;
